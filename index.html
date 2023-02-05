@@ -4,10 +4,7 @@
     <title>My Website</title>
     <style>
       .circle {
-        width: 20px;
-        height: 20px;
-        background-color: blue;
-        border-radius: 10px;
+        border-radius: 50%;
         position: absolute;
       }
     </style>
@@ -34,28 +31,30 @@
       let circle3X = 0;
       let circle3Y = 0;
 
+      function createCircle(circle, radius, x, y) {
+        circle.style.width = `${2 * radius}px`;
+        circle.style.height = `${2 * radius}px`;
+        circle.style.left = `${x - radius}px`;
+        circle.style.top = `${y - radius}px`;
+      }
+
       document.addEventListener("mousemove", (event) => {
         mainCircleX = event.pageX;
         mainCircleY = event.pageY;
-        mainCircle.style.left = `${mainCircleX - 10}px`;
-        mainCircle.style.top = `${mainCircleY - 10}px`;
+        createCircle(mainCircle, 20, mainCircleX, mainCircleY);
 
-        circle1X = mainCircleX + 20 * Math.cos(0.005 * Date.now());
-        circle1Y = mainCircleY + 20 * Math.sin(0.005 * Date.now());
-        circle1.style.left = `${circle1X - 10}px`;
-        circle1.style.top = `${circle1Y - 10}px`;
+        circle1X = mainCircleX + 20 * Math.cos(0.05 * Date.now());
+        circle1Y = mainCircleY + 20 * Math.sin(0.05 * Date.now());
+        createCircle(circle1, 10, circle1X, circle1Y);
 
-        circle2X = mainCircleX + 40 * Math.cos(0.003 * Date.now());
-        circle2Y = mainCircleY + 40 * Math.sin(0.003 * Date.now());
-        circle2.style.left = `${circle2X - 10}px`;
-        circle2.style.top = `${circle2Y - 10}px`;
+        circle2X = mainCircleX + 40 * Math.cos(0.03 * Date.now());
+        circle2Y = mainCircleY + 40 * Math.sin(0.03 * Date.now());
+        createCircle(circle2, 10, circle2X, circle2Y);
 
-        circle3X = mainCircleX + 60 * Math.cos(0.002 * Date.now());
-        circle3Y = mainCircleY + 60 * Math.sin(0.002 * Date.now());
-        circle3.style.left = `${circle3X - 10}px`;
-        circle3.style.top = `${circle3Y - 10}px`;
+        circle3X = mainCircleX + 60 * Math.cos(0.02 * Date.now());
+        circle3Y = mainCircleY + 60 * Math.sin(0.02 * Date.now());
+        createCircle(circle3, 10, circle3X, circle3Y);
       });
     </script>
   </body>
 </html>
-
