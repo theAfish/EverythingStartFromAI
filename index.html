@@ -17,16 +17,11 @@
   <body>
     <canvas id="canvas"></canvas>
     <script>
+      // Get reference to the canvas element
       var canvas = document.getElementById("canvas");
-      // Set the canvas size to the size of the website's window
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
       
       // Get the 2D rendering context
       var context = canvas.getContext("2d");
-      
-      // Clear the canvas
-      context.clearRect(0, 0, canvas.width, canvas.height);
       
       // Define the radius of the mouse-following circle
       var mouseRadius = 50;
@@ -55,15 +50,28 @@
         
         // Draw the mouse-following circle at the updated position
         create_circle(mouseRadius, event.clientX, event.clientY, "red");
-        
+      });
+      
+      // Animate the moving circle
+      function animate() {
         // Update the position of the moving circle
         angle += angularVelocity;
-        x = event.clientX + mouseRadius * Math.cos(angle) + movingRadius * Math.cos(angle);
-        y = event.clientY + mouseRadius * Math.sin(angle) + movingRadius * Math.sin(angle);
+        x = canvas.width / 2 + mouseRadius * Math.cos(angle) + movingRadius * Math.cos(angle);
+        y = canvas.height / 2 + mouseRadius * Math.sin(angle) + movingRadius * Math.sin(angle);
+        
+        // Clear the canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw the mouse-following circle at the updated position
+        create_circle(mouseRadius, canvas.width / 2, canvas.height / 2, "red");
         
         // Draw the moving circle at the updated position
         create_circle(movingRadius, x, y, "blue");
-      });
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
       
       // Handle resize event
       window.addEventListener("resize", function() {
