@@ -30,3 +30,16 @@ function create_circle(radius, x, y, color) {
   // Fill the circle with the fill style
   context.fill();
 }
+
+// Animate the moving circle
+function moving_around(centerX, centerY, movingRadius,radius, color, angularVelocity, angle) {
+  // Update the position of the moving circle
+  angle += angularVelocity;
+  x = centerX + movingRadius * Math.cos(angle);
+  y = centerY + movingRadius * Math.sin(angle);
+
+  // Draw the moving circle at the updated position
+  create_circle(movingRadius, x, y, color);
+
+  requestAnimationFrame(animate);
+}
