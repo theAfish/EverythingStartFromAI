@@ -1,63 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>My Website</title>
-    <style>
-      body {
-        background-color: #eeeeee;
-      }
-      .circle {
-        border-radius: 50%;
-        position: absolute;
-      }
-    </style>
   </head>
   <body>
-    <h1>Welcome to My Website</h1>
-    <p>Move your mouse to see the circles follow it.</p>
-    <div class="circle" id="main-circle"></div>
-    <div class="circle" id="circle1"></div>
-    <div class="circle" id="circle2"></div>
-    <div class="circle" id="circle3"></div>
-    <script>
-      const mainCircle = document.querySelector("#main-circle");
-      const circle1 = document.querySelector("#circle1");
-      const circle2 = document.querySelector("#circle2");
-      const circle3 = document.querySelector("#circle3");
-
-      let mainCircleX = 0;
-      let mainCircleY = 0;
-      let circle1X = 0;
-      let circle1Y = 0;
-      let circle2X = 0;
-      let circle2Y = 0;
-      let circle3X = 0;
-      let circle3Y = 0;
-
-      function createCircle(circle, radius, x, y) {
-        circle.style.width = `${2 * radius}px`;
-        circle.style.height = `${2 * radius}px`;
-        circle.style.left = `${x - radius}px`;
-        circle.style.top = `${y - radius}px`;
-      }
-
-      document.addEventListener("mousemove", (event) => {
-        mainCircleX = event.pageX;
-        mainCircleY = event.pageY;
-        createCircle(mainCircle, 20, mainCircleX, mainCircleY);
-
-        circle1X = mainCircleX + 20 * Math.cos(0.05 * Date.now());
-        circle1Y = mainCircleY + 20 * Math.sin(0.05 * Date.now());
-        createCircle(circle1, 10, circle1X, circle1Y);
-
-        circle2X = mainCircleX + 40 * Math.cos(0.03 * Date.now());
-        circle2Y = mainCircleY + 40 * Math.sin(0.03 * Date.now());
-        createCircle(circle2, 10, circle2X, circle2Y);
-
-        circle3X = mainCircleX + 60 * Math.cos(0.02 * Date.now());
-        circle3Y = mainCircleY + 60 * Math.sin(0.02 * Date.now());
-        createCircle(circle3, 10, circle3X, circle3Y);
-      });
-    </script>
   </body>
 </html>
+
