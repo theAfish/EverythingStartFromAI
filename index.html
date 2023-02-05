@@ -32,7 +32,8 @@
       var mouseY = 0;
       
       // Define the radius of the moving circle
-      var movingRadius = 20;
+      var orbRadius = 20;
+      var movingRadius = 100;
       
       // Define the angular velocity of the moving circle
       var angularVelocity = 0.01;
@@ -50,24 +51,29 @@
         mouseY = event.clientY;
       });
       
-      // Animate the moving circle
-      function animate() {
-        // Update the position of the moving circle
-        angle += angularVelocity;
-        x = mouseX + mouseRadius * Math.cos(angle) + movingRadius * Math.cos(angle);
-        y = mouseY + mouseRadius * Math.sin(angle) + movingRadius * Math.sin(angle);
-        
-        // Clear the canvas
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw the moving circle at the updated position
-        create_circle(movingRadius, x, y, "blue");
-        create_circle(mouseRadius, mouseX, mouseY, "red");
-        
-        requestAnimationFrame(animate);
-      }
+      // Clear the canvas
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      moving_around(mouseX, mouseY, movingRadius, orbRadius, "black", angularVelocity, angle)
+      create_circle(mouseRadius, mouseX, mouseY, "red");
       
-      animate();
+//       // Animate the moving circle
+//       function animate() {
+//         // Update the position of the moving circle
+//         angle += angularVelocity;
+//         x = mouseX + mouseRadius * Math.cos(angle) + movingRadius * Math.cos(angle);
+//         y = mouseY + mouseRadius * Math.sin(angle) + movingRadius * Math.sin(angle);
+        
+//         // Clear the canvas
+//         context.clearRect(0, 0, canvas.width, canvas.height);
+        
+//         // Draw the moving circle at the updated position
+//         create_circle(movingRadius, x, y, "blue");
+//         create_circle(mouseRadius, mouseX, mouseY, "red");
+        
+//         requestAnimationFrame(animate);
+//       }
+      
+//       animate();
       
       // Handle resize event
       window.addEventListener("resize", function() {
