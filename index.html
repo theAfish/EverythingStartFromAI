@@ -19,6 +19,9 @@
     <script>
       // Get reference to the canvas element
       var canvas = document.getElementById("canvas");
+      // Set the canvas size to the size of the website's window
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
       
       // Get the 2D rendering context
       var context = canvas.getContext("2d");
