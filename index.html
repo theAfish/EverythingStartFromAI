@@ -28,6 +28,8 @@
       
       // Define the radius of the mouse-following circle
       var mouseRadius = 50;
+      var mouseX = 0;
+      var mouseY = 0;
       
       // Define the radius of the moving circle
       var movingRadius = 20;
@@ -64,9 +66,6 @@
         
         // Clear the canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw the mouse-following circle at the updated position
-        create_circle(mouseRadius, canvas.width / 2, canvas.height / 2, "red");
         
         // Draw the moving circle at the updated position
         create_circle(movingRadius, x, y, "blue");
