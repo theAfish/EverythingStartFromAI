@@ -39,7 +39,6 @@ function moving_around(centerX, centerY, movingRadius,radius, color, angularVelo
   y = centerY + movingRadius * Math.sin(angle);
 
   // Draw the moving circle at the updated position
-  create_circle(movingRadius, x, y, color);
-
+  create_circle(radius, x, y, color);
   requestAnimationFrame(animate);
 }
