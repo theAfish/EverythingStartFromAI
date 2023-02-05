@@ -40,35 +40,29 @@
       // Define the initial angle of the moving circle
       var angle = 0;
       
-      // Draw the mouse-following circle at the initial position
-      create_circle(mouseRadius, canvas.width / 2, canvas.height / 2, "red");
-      
       // Draw the moving circle at the initial position
       var x = canvas.width / 2 + mouseRadius + movingRadius;
       var y = canvas.height / 2;
-      create_circle(movingRadius, x, y, "blue");
       
       // Handle mousemove event
       canvas.addEventListener("mousemove", function(event) {
-        // Clear the canvas
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw the mouse-following circle at the updated position
-        create_circle(mouseRadius, event.clientX, event.clientY, "red");
+        mouseX = event.clientX;
+        mouseY = event.clientY;
       });
       
       // Animate the moving circle
       function animate() {
         // Update the position of the moving circle
         angle += angularVelocity;
-        x = canvas.width / 2 + mouseRadius * Math.cos(angle) + movingRadius * Math.cos(angle);
-        y = canvas.height / 2 + mouseRadius * Math.sin(angle) + movingRadius * Math.sin(angle);
+        x = mouseX + mouseRadius * Math.cos(angle) + movingRadius * Math.cos(angle);
+        y = mouseY + mouseRadius * Math.sin(angle) + movingRadius * Math.sin(angle);
         
         // Clear the canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
         
         // Draw the moving circle at the updated position
         create_circle(movingRadius, x, y, "blue");
+        create_circle(mouseRadius, mouseX, mouseY, "red");
         
         requestAnimationFrame(animate);
       }
