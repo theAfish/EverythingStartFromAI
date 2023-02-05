@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DO<!DOCTYPE html>
 <html>
   <head>
     <title>My Website</title>
@@ -14,13 +14,46 @@
   </head>
   <body>
     <h1>Welcome to My Website</h1>
-    <p>Move your mouse to see the circle follow it.</p>
-    <div class="circle" id="circle"></div>
+    <p>Move your mouse to see the circles follow it.</p>
+    <div class="circle" id="main-circle"></div>
+    <div class="circle" id="circle1"></div>
+    <div class="circle" id="circle2"></div>
+    <div class="circle" id="circle3"></div>
     <script>
-      const circle = document.querySelector("#circle");
+      const mainCircle = document.querySelector("#main-circle");
+      const circle1 = document.querySelector("#circle1");
+      const circle2 = document.querySelector("#circle2");
+      const circle3 = document.querySelector("#circle3");
+
+      let mainCircleX = 0;
+      let mainCircleY = 0;
+      let circle1X = 0;
+      let circle1Y = 0;
+      let circle2X = 0;
+      let circle2Y = 0;
+      let circle3X = 0;
+      let circle3Y = 0;
+
       document.addEventListener("mousemove", (event) => {
-        circle.style.left = `${event.pageX - 25}px`;
-        circle.style.top = `${event.pageY - 25}px`;
+        mainCircleX = event.pageX;
+        mainCircleY = event.pageY;
+        mainCircle.style.left = `${mainCircleX - 25}px`;
+        mainCircle.style.top = `${mainCircleY - 25}px`;
+
+        circle1X = mainCircleX + 50 * Math.cos(0.1 * Date.now());
+        circle1Y = mainCircleY + 50 * Math.sin(0.1 * Date.now());
+        circle1.style.left = `${circle1X - 25}px`;
+        circle1.style.top = `${circle1Y - 25}px`;
+
+        circle2X = mainCircleX + 100 * Math.cos(0.05 * Date.now());
+        circle2Y = mainCircleY + 100 * Math.sin(0.05 * Date.now());
+        circle2.style.left = `${circle2X - 25}px`;
+        circle2.style.top = `${circle2Y - 25}px`;
+
+        circle3X = mainCircleX + 150 * Math.cos(0.03 * Date.now());
+        circle3Y = mainCircleY + 150 * Math.sin(0.03 * Date.now());
+        circle3.style.left = `${circle3X - 25}px`;
+        circle3.style.top = `${circle3Y - 25}px`;
       });
     </script>
   </body>
