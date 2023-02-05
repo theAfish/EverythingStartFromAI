@@ -6,9 +6,12 @@
     <script src="functions/simple_geometry.js"></script>
   </head>
   <body>
-    <canvas id="canvas" width="500" height="500"></canvas>
+    <canvas id="canvas"></canvas>
     <script>
       var canvas = document.getElementById("canvas");
+      // Set the canvas size to the size of the website's window
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
       
       // Get the 2D rendering context
       var context = canvas.getContext("2d");
