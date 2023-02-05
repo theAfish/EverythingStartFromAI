@@ -18,9 +18,6 @@
     <canvas id="canvas"></canvas>
     <script>
       var canvas = document.getElementById("canvas");
-      // Set the canvas size to the size of the website's window
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
       
       // Get the 2D rendering context
       var context = canvas.getContext("2d");
@@ -28,17 +25,44 @@
       // Clear the canvas
       context.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw the circle at the initial position
-      create_circle(50, canvas.width / 2, canvas.height / 2, "red");
+      // Define the radius of the mouse-following circle
+      var mouseRadius = 50;
+      
+      // Define the radius of the moving circle
+      var movingRadius = 20;
+      
+      // Define the angular velocity of the moving circle
+      var angularVelocity = 0.01;
+      
+      // Define the initial angle of the moving circle
+      var angle = 0;
+      
+      // Draw the mouse-following circle at the initial position
+      create_circle(mouseRadius, canvas.width / 2, canvas.height / 2, "red");
+      
+      // Draw the moving circle at the initial position
+      var x = canvas.width / 2 + mouseRadius + movingRadius;
+      var y = canvas.height / 2;
+      create_circle(movingRadius, x, y, "blue");
       
       // Handle mousemove event
       canvas.addEventListener("mousemove", function(event) {
         // Clear the canvas
         context.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Draw the circle at the updated position
-        create_circle(50, event.clientX, event.clientY, "red");
+        // Draw the mouse-following circle at the updated position
+        create_circle(mouseRadius, event.clientX, event.clientY, "red");
+        
+        // Update the position of the moving circle
+        angle += angularVelocity;
+        x = event.clientX + mouseRadius * Math.cos(angle) + movingRadius * Math.cos(angle);
+        y = event.clientY + mouseRadius * Math.sin(angle) + movingRadius * Math.sin(angle);
+        
+        // Draw the moving circle at the updated position
+        create_circle(movingRadius, x, y, "blue");
       });
+      
+      // Handle resize event
       window.addEventListener("resize", function() {
         // Update the canvas size to the size of the website's window
         canvas.width = window.innerWidth;
