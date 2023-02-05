@@ -30,6 +30,11 @@
         // Draw the circle at the updated position
         create_circle(50, event.clientX, event.clientY, "red");
       });
+      window.addEventListener("resize", function() {
+        // Update the canvas size to the size of the website's window
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
     </script>
     
   </body>
