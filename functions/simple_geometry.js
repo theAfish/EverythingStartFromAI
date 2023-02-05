@@ -40,5 +40,4 @@ function moving_around(centerX, centerY, movingRadius,radius, color, angularVelo
 
   // Draw the moving circle at the updated position
   create_circle(radius, x, y, color);
-  requestAnimationFrame(moving_around);
 }
