@@ -54,6 +54,7 @@
       // Clear the canvas
       context.clearRect(0, 0, canvas.width, canvas.height);
       moving_around(mouseX, mouseY, movingRadius, orbRadius, "black", angularVelocity, angle)
+      requestAnimationFrame(moving_around);
       create_circle(mouseRadius, mouseX, mouseY, "red");
       
 //       // Animate the moving circle
