@@ -49,4 +49,11 @@ function draw() {
 	requestAnimationFrame(draw);
 }
 
+window.addEventListener('resize', () => {
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+});
+
+draw();
+
 draw();
