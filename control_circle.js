@@ -55,5 +55,3 @@ window.addEventListener('resize', () => {
 });
 
 draw();
-
-draw();
