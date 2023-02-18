@@ -23,8 +23,23 @@ document.addEventListener('keydown', (event) => {
 	}
 });
 
+function wrapPosition(position, max) {
+	// Wrap the position around the edges of the canvas
+	if (position < 0) {
+		position = max + position;
+	}
+	if (position > max) {
+		position = position - max;
+	}
+	return position;
+}
+
 function draw() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
+
+	// Wrap the circle position around the edges of the canvas
+	circleX = wrapPosition(circleX, canvas.width);
+	circleY = wrapPosition(circleY, canvas.height);
 
 	context.beginPath();
 	context.arc(circleX, circleY, circleRadius, 0, 2 * Math.PI);
@@ -35,3 +50,4 @@ function draw() {
 }
 
 draw();
+
